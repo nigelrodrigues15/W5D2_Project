@@ -1,0 +1,10 @@
+<h1>Post</h1>
+<%= @post.title %>
+<%= @post.url %>
+<%= @post.content %>
+<h1>comments</h1>
+<% @post.comments.each do |comment| %>
+  <li><a href="<%=comment_url(comment)%>">
+    <%= comment.content if comment.parent_comment_id.nil? %></a></li>
+  <% end %>
+<%= link_to('New Comment', new_post_comment_url(@post.id)) %>
